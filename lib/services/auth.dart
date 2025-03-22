@@ -45,7 +45,7 @@ class Auth {
     var store =FirebaseFirestore.instance.collection("patients").doc(uid);
     final patienntModel=PatientModel(id: uid, email: email ,deviceToken:deviceToken ,isDoctor: isDoctor
     , name: fullName ,pictureUrl: ImageUrl);
-    final user=userModel(id: uid, name: fullName, isDoctor: isDoctor, pictureUrl: ImageUrl, email: email);
+    final user=UserModel(id: uid, name: fullName, isDoctor: isDoctor, pictureUrl: ImageUrl, email: email);
 
     await store.set(patienntModel.toJson());
     await FirebaseFirestore.instance.collection("users").doc(uid).set(user.toJson());

@@ -56,6 +56,7 @@ class _SettingsViewState extends State<SettingsView> {
 
    @override
    Widget build(BuildContext context) {
+
      final currentUser =FirebaseAuth.instance.currentUser;
      return Scaffold(
          appBar: AppBar(

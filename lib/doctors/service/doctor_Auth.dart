@@ -58,7 +58,7 @@ class DoctorAuth {
     final doctorModel =DoctorModel(id: uid, email: email ,name: fullName,Category: Category ,
     experience: experience,pictureUrl: pictureUrl , appointsDays: appointsDays , isFavorite:isFavorite,
     isDoctor: isDoctor ,deviceToken:deviceToken );
-    final user=userModel(id: uid, name: fullName, isDoctor: isDoctor, pictureUrl: pictureUrl, email: email);
+    final user=UserModel(id: uid, name: fullName, isDoctor: isDoctor, pictureUrl: pictureUrl, email: email);
 
     await  store.set(doctorModel.toJson());
     await FirebaseFirestore.instance.collection("users").doc(uid).set(user.toJson());

@@ -2,6 +2,8 @@ import 'package:amazon/res/components/custom_book_card.dart';
 import 'package:amazon/res/components/waiting_screen.dart';
 import 'package:amazon/services/Fcm_notifications_api.dart';
 import 'package:amazon/shared_preferences/my_shared_Preferences.dart';
+import 'package:amazon/views/QR_Scanner/QR_Scanner_screen.dart';
+import 'package:amazon/views/QR_Scanner/qr_home.dart';
 import 'package:amazon/views/appointments/booking.dart';
 import 'package:amazon/views/appointments/date_time_picker.dart';
 import 'package:amazon/views/home.dart';
@@ -17,16 +19,30 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Facility_Manager/facility_home_screen.dart';
+import 'Facility_Manager/login_and_signup_screens/Facility_customer_login_screen.dart';
+import 'Facility_Manager/network_controller/dependency_injection/dependency_injection.dart';
+import 'Facility_Manager/paymob_manager/constatnts/payment_screen.dart';
+import 'Facility_Manager/paymob_manager/paymentview_check.dart';
+import 'Facility_Manager/splach_screen.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
 import 'models/booking_date_time_converter.dart';
+import 'package:paymob_payment/paymob_payment.dart';
+
 
 
 late SharedPreferences? _sharedPreferences;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  //paymob library check
+  PaymobPayment.instance.initialize(
+    apiKey: "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeE1ERTROaXdpYm1GdFpTSTZJbWx1YVhScFlXd2lmUS44NVhKaE1FT0g3bHktTzhZaVNYeGMtVHVDcnJOVnIzT0I4M2wzbGhMR0wxNWRlMHJtS21Cb09xbmRMUzNSMVR5Ull6TUdwN0x5emFNVERacHdwLTZFQQ=="
+    ,integrationID: 4892740,
+    iFrameID: 885724,
+  );
    // final storage= await HydratedStorage.build(storageDirectory: await getApplicationDocumentsDirectory());
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -41,6 +57,7 @@ void main() async{
   //       : await getTemporaryDirectory(),
   // );
   runApp(const MyApp());
+  DependencyInjection.init();
 }
 
 class MyApp extends StatefulWidget {
@@ -56,7 +73,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:PatientLoginScreen(sharedPreferences: _sharedPreferences,)
+      home:
+      SplachScreen()
+      //CustomerLoginScreen(sharedPreferences: null,)
+
+      //PaymentView()
+
+      //PaymentScreen()
+
+      // CustomerLoginScreen(sharedPreferences: null,)
+      // PatientLoginScreen(sharedPreferences: _sharedPreferences,)
       // PatientLoginScreen(sharedPreferences: _sharedPreferences,)
 
       // StreamBuilder(stream: FirebaseAuth.instance.authStateChanges() ,
@@ -70,8 +96,8 @@ class _MyAppState extends State<MyApp> {
       //     return PatientLoginScreen(sharedPreferences: _sharedPreferences,);
       // },)
 
-
-      // PatientLoginScreen(),
+      //QrHome()
+     //PatientLoginScreen(sharedPreferences: null,),
       // title: 'Flutter Demo',
       // theme: ThemeData(
       //

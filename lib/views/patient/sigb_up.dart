@@ -29,7 +29,7 @@ class PatientSignUpScreen extends StatefulWidget {
 class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _auth=Auth();
-  final _doctorAuth=DoctorAuth();
+  final _customerAuth=DoctorAuth();
   bool _saving = false;
   File? _selectedImage;
   String name='';
@@ -119,7 +119,7 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                                });
                                _formKey.currentState!.save();
                                try{
-                                 final authResult= await  _doctorAuth.signUp(email: email.trim(),
+                                 final authResult= await  _customerAuth.signUp(email: email.trim(),
                                     password:  password.trim(),fullName: name.trim() ,
                                      Category: Category.trim(),
                                    experience: experience.trim() ,imageFile: _selectedImage!

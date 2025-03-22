@@ -196,18 +196,18 @@ class Appointment{
 
 }
 
-class userModel{
+class UserModel{
 final String id;
 final String name;
 final bool isDoctor;
 final String pictureUrl;
 final String email;
 
-userModel({required this.id, required this.name,required this.isDoctor,required this.pictureUrl,
+UserModel({required this.id, required this.name,required this.isDoctor,required this.pictureUrl,
   required
 this.email});
 
-factory userModel.fromJson(Map<String, dynamic> json) => userModel(
+factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
   id: json["id"],
   name: json["name"],
   email: json["email"],

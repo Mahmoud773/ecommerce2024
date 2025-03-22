@@ -54,14 +54,15 @@ class CustomButton extends StatelessWidget {
 
 
 class Button extends StatelessWidget {
-  const Button(
+   Button(
       {Key? key,
         required this.width,
         required this.title,
         required this.onPressed,
-        required this.disable})
+        required this.disable,
+      this.height=50})
       : super(key: key);
-
+  double height;
   final double width;
   final String title;
   final bool disable; //this is used to disable button
@@ -70,10 +71,11 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: height,
       width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: Colors.deepPurpleAccent,
           foregroundColor: Colors.white,
         ),
         onPressed: disable ? null : onPressed,
