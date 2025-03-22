@@ -571,12 +571,13 @@ String badRatingReason="";
                                   problemModel.waitingForCustomerToAgreeForSolvingDate=false;
                                   problemModel.isCustomerRespondedToEnsureSolving=true;
                                   problemModel.waitTechnicianToSolveAfterPending="yes";
-
-                                  problemsList.removeWhere((item)=>item.id==pendingProblemsList[index].id);
-                                  currentCustomerProblemsList.removeWhere((item)=>item.id==pendingProblemsList[index].id);
+                                    final problemModelIndex= problemsList.indexWhere((item)=>item.id==pendingProblemsList[index].id);
+                                  problemsList[problemModelIndex]=problemModel;
+                                  // problemsList.removeWhere((item)=>item.id==pendingProblemsList[index].id);
+                                  // currentCustomerProblemsList.removeWhere((item)=>item.id==pendingProblemsList[index].id);
                                   print("problemsList${problemsList.length}");
-                                  problemsList.add(problemModel);
-                                  currentCustomerProblemsList.add(problemModel);
+                                  // problemsList.add(problemModel);
+                                  // currentCustomerProblemsList.add(problemModel);
                                   await CustomersFirestoreRpository.uploadProblems(uid,
 
                                       problemsList ,merge: false);
