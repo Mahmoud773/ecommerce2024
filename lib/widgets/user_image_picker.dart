@@ -33,12 +33,26 @@ class _UserImagePickerState extends State<UserImagePicker> {
       children: [
         CircleAvatar(
           radius: 40,
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.grey[400],
           foregroundImage: _pickedImageFile !=null ?  FileImage(_pickedImageFile!):null,
         ),
-        TextButton.icon(onPressed: _pickImage, icon: Icon(Icons.image , color: AppColors.primaryColor,),
-            label: Text("Add Image" ,
-            style: TextStyle(color: AppColors.primaryColor),))
+        MaterialButton(onPressed: _pickImage ,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.image , color: Colors.white,),
+              SizedBox(width: 10,),
+              Text("Add Image" , style: TextStyle(
+                  color: Colors.black
+              ),),
+            ],
+          ),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20)),
+          color: Colors.grey[400],),
+        // TextButton.icon(onPressed: _pickImage, icon: Icon(Icons.image , color: Colors.deepPurpleAccent,),
+        //     label: Text("Add Image" ,
+        //     style: TextStyle(color: Colors.black),))
       ],
     );
   }

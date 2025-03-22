@@ -24,7 +24,7 @@ class AppointmentView extends StatefulWidget {
 }
 
 class _AppointmentViewState extends State<AppointmentView> {
-  userModel? user;
+  UserModel? user;
    String doctorId='';
   bool isDoctor=false;
    List<DayTimeDetails> list9 =[];
@@ -64,7 +64,7 @@ class _AppointmentViewState extends State<AppointmentView> {
               return Center(child: CircularProgressIndicator(),);
             }
             if(snapshot.hasData  ) {
-              user= userModel.fromJson(snapshot.data!.data()!);
+              user= UserModel.fromJson(snapshot.data!.data()!);
               // final doctorsList =snapshot!.data!.docs as List<DoctorModel>;
               return  StreamBuilder(
                 stream: user!.isDoctor ?

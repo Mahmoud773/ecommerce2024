@@ -19,7 +19,7 @@ class MainButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          primary: Theme.of(context).primaryColor,
+          backgroundColor:  Theme.of(context).primaryColor,
         ),
         child: Text(
           text,

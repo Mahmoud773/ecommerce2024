@@ -59,7 +59,7 @@ class _DoctorNewDetailsState extends State<DoctorNewDetails> {
   //   return user!;
   //
   // }
-   userModel? user;
+   UserModel? user;
   // void getCurrentUser() async {
   //   final result =await  FirebaseFirestore.instance.collection("users").doc("${
   //       FirebaseAuth.instance!.currentUser
@@ -485,7 +485,7 @@ class _DoctorNewDetailsState extends State<DoctorNewDetails> {
               return Center(child: CircularProgressIndicator(),);
             }
             if(snapshot.hasData  ) {
-              user= userModel.fromJson(snapshot.data!.data()!);
+              user= UserModel.fromJson(snapshot.data!.data()!);
               // final doctorsList =snapshot!.data!.docs as List<DoctorModel>;
               return Padding(
                 padding: const EdgeInsets.only(bottom: 5 ,right: 8,left: 8),
@@ -553,7 +553,8 @@ class _DoctorNewDetailsState extends State<DoctorNewDetails> {
                                 //
                                 // });
 
-                                await DoctorsFirestoreRpository.uploadReservedDoctorAppoints(widget.doctorModel.id,
+                                await DoctorsFirestoreRpository.uploadReservedDoctorAppoints
+                                  (widget.doctorModel.id,
                                     patientAppointsList ,isUpdating: true);
                                 await PatientFireaseRepository.uploadPatientAppoints(
                                     currentUser!.uid, patientAppointsList ,isUpdating: true).
